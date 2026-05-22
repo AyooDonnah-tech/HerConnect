@@ -46,25 +46,25 @@ const events = [
 
 const members = [
   {
-    name: "Sarah Chen",
+    name: "Prossy Wanyana",
     role: "VP Engineering @ Meta",
     year: "2015",
     location: "San Francisco",
   },
   {
-    name: "Marcus Johnson",
+    name: "Sheba Ayinza",
     role: "Founder @ NovaTech",
     year: "2012",
     location: "Austin",
   },
   {
-    name: "Priya Sharma",
+    name: "Sarah Muwanguzi",
     role: "Director of AI @ Google",
     year: "2016",
     location: "London",
   },
   {
-    name: "David Okonkwo",
+    name: "Vision Numusiima",
     role: "Managing Partner @ Apex Capital",
     year: "2010",
     location: "Lagos",
@@ -86,11 +86,35 @@ function renderNav() {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand to-teal flex items-center justify-center">
-              <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
-            </div>
-            <span class="font-heading font-bold text-xl text-gray-900" id="nav-title">Her Connect</span>
-          </div>
+
+<button onclick="toggleMobileMenu()"class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+
+<i
+data-lucide="menu"
+class="w-5 h-5 text-gray-600">
+</i>
+
+</button>
+
+<div
+class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand to-teal flex items-center justify-center">
+
+<i
+data-lucide="sparkles"
+class="w-5 h-5 text-white">
+</i>
+
+</div>
+
+<span
+class="font-heading font-bold text-xl text-gray-900"
+id="nav-title">
+
+Her Connect
+
+</span>
+
+</div>
           <div class="hidden md:flex items-center gap-1">
             ${navItems
               .map(
@@ -108,9 +132,6 @@ function renderNav() {
               <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
             </button>
             <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand to-teal flex items-center justify-center text-white text-sm font-bold">A</div>
-            <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
-              <i data-lucide="menu" class="w-5 h-5 text-gray-600"></i>
-            </button>
           </div>
         </div>
       </div>
@@ -159,9 +180,7 @@ function renderHero() {
           ${stats
             .map(
               (s, i) => `
-<div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"
-onclick="navigate('directory')"
-style="cursor:pointer;">              <div class="w-12 h-12 mx-auto rounded-xl bg-brand/10 flex items-center justify-center mb-3">
+        <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"onclick="navigate('directory')"style="cursor:pointer;">              <div class="w-12 h-12 mx-auto rounded-xl bg-brand/10 flex items-center justify-center mb-3">
                 <i data-lucide="${s.icon}" class="w-6 h-6 text-brand"></i>
               </div>
               <div class="stat-number font-heading font-bold text-2xl text-gray-900">${s.value}</div>
@@ -192,9 +211,7 @@ function renderEvents() {
           ${events
             .map(
               (e, i) => `
-<div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"
-onclick="navigate('directory')"
-style="cursor:pointer;">              <div class="flex justify-between items-start">
+        <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"onclick="navigate('directory')"style="cursor:pointer;">              <div class="flex justify-between items-start">
                 <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand/10 text-brand">${e.category}</span>
                 <span class="text-xs text-gray-400 flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> ${e.attendees}</span>
               </div>
@@ -238,9 +255,7 @@ function renderMembers() {
                 "from-brand-light to-teal",
               ];
               return `
-<div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"
-onclick="navigate('directory')"
-style="cursor:pointer;">              <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${colors[i]} flex items-center justify-center text-white text-xl font-bold mb-4">
+        <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"onclick="navigate('directory')"style="cursor:pointer;">              <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${colors[i]} flex items-center justify-center text-white text-xl font-bold mb-4">
                 ${m.name
                   .split(" ")
                   .map((n) => n[0])
@@ -252,7 +267,7 @@ style="cursor:pointer;">              <div class="w-16 h-16 mx-auto rounded-full
                 <span class="flex items-center gap-1"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> ${m.year}</span>
                 <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> ${m.location}</span>
               </div>
-  <button class="connect-btn">Connect</button>
+        <button class="connect-btn">Connect</button>
             </div>`;
             })
             .join("")}
@@ -314,9 +329,7 @@ function renderDirectoryPage() {
                 "from-brand-light to-teal",
               ];
               return `
-<div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"
-onclick="navigate('directory')"
-style="cursor:pointer;">              <div class="w-14 h-14 rounded-full bg-gradient-to-br ${colors[i % 4]} flex items-center justify-center text-white font-bold shrink-0">
+        <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"onclick="navigate('directory')"style="cursor:pointer;">              <div class="w-14 h-14 rounded-full bg-gradient-to-br ${colors[i % 4]} flex items-center justify-center text-white font-bold shrink-0">
                 ${m.name
                   .split(" ")
                   .map((n) => n[0])
@@ -346,9 +359,7 @@ function renderEventsPage() {
             .concat(events)
             .map(
               (e, i) => `
-<div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"
-onclick="navigate('directory')"
-style="cursor:pointer;">              <div class="flex justify-between items-start">
+      <div class="card-hover bg-white rounded-2xl p-6 border border-gray-100 anim-fade-up delay-${i + 1}"onclick="navigate('directory')"style="cursor:pointer;">              <div class="flex justify-between items-start">
                 <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand/10 text-brand">${e.category}</span>
                 <span class="text-xs text-gray-400 flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> ${e.attendees}</span>
               </div>
@@ -411,6 +422,10 @@ function render() {
     default:
       pageContent = renderHomePage();
   }
+
+  document.getElementById("app").className = state.mobileMenuOpen
+    ? "menu-open"
+    : "";
 
   document.getElementById("app").innerHTML =
     renderNav() + `<main>${pageContent}</main>` + renderFooter();

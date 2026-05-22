@@ -9,6 +9,20 @@
   --text: #111827;
 }
 
+main{
+
+transition:
+margin-left .3s;
+
+}
+
+.menu-open main{
+
+margin-left:
+240px;
+
+}
+
 body {
   height: 100%;
   margin: 0;
@@ -30,40 +44,117 @@ h6,
 }
 
 .mobile-menu {
-  position: absolute;
+  position: fixed;
   top: 70px;
   left: 0;
-  right: 20px;
+  left: 20px;
   bottom: 0;
   background: rgba(255, 255, 255, 0.95);
   padding: 1rem;
   border-radius: 18px;
   gap: 1.5rem;
   width: 220px;
+  height: 100vh;
   z-index: 999;
 }
 
-.grid {
-  display: grid;
-  gap: 24px;
-  justify-content: center;
-  align-items: stretch;
-  padding: 1rem;
-}
-@media (min-width: 768px) {
-  .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(320px, 420px));
-    justify-content: center;
-  }
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.grid{
+display:grid;
+gap:24px;
+padding:1rem;
 }
 
-@media (min-width: 1200px) {
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(220px, 280px));
-  }
+
+/* HOME STATS */
+
+.grid-cols-2{
+grid-template-columns:
+repeat(
+2,
+1fr
+);
+}
+
+@media(min-width:768px){
+
+.md\:grid-cols-4{
+
+grid-template-columns:
+repeat(
+4,
+1fr
+);
+
+}
+
+}
+
+
+
+/* EVENTS */
+
+@media(min-width:768px){
+
+.md\:grid-cols-2{
+
+grid-template-columns:
+repeat(
+3,
+1fr
+);
+
+}
+
+}
+
+
+
+/* MEMBERS */
+
+@media(min-width:640px){
+
+.sm\:grid-cols-2{
+
+grid-template-columns:
+repeat(
+2,
+1fr
+);
+
+}
+
+}
+
+@media(min-width:1200px){
+
+.lg\:grid-cols-4{
+
+grid-template-columns:
+repeat(
+4,
+1fr
+);
+
+}
+
+}
+
+
+
+/* DIRECTORY */
+
+@media(min-width:1200px){
+
+.lg\:grid-cols-3{
+
+grid-template-columns:
+repeat(
+3,
+1fr
+);
+
+}
+
 }
 .text-sm {
   font-size: 0.9rem;
@@ -315,11 +406,11 @@ button {
   border-radius: 24px;
   min-height: 220px;
   width: 100%;
-  max-width: 380px;
+  max-width: 320px;
   margin: 5px auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   overflow: hidden;
 }
@@ -480,7 +571,7 @@ section {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #4b5563;
+  color: #010409;
   font-weight: 500;
 }
 .sidebar-link:hover,
