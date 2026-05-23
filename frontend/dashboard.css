@@ -9,18 +9,12 @@
   --text: #111827;
 }
 
-main{
-
-transition:
-margin-left .3s;
-
+main {
+  transition: margin-left 0.3s;
 }
 
-.menu-open main{
-
-margin-left:
-240px;
-
+.menu-open main {
+  margin-left: 240px;
 }
 
 body {
@@ -58,103 +52,52 @@ h6,
   z-index: 999;
 }
 
-.grid{
-display:grid;
-gap:24px;
-padding:1rem;
+.grid {
+  display: grid;
+  gap: 24px;
+  padding: 1rem;
 }
-
 
 /* HOME STATS */
 
-.grid-cols-2{
-grid-template-columns:
-repeat(
-2,
-1fr
-);
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
-@media(min-width:768px){
-
-.md\:grid-cols-4{
-
-grid-template-columns:
-repeat(
-4,
-1fr
-);
-
+@media (min-width: 768px) {
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-
-}
-
-
 
 /* EVENTS */
 
-@media(min-width:768px){
-
-.md\:grid-cols-2{
-
-grid-template-columns:
-repeat(
-3,
-1fr
-);
-
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
-
-}
-
-
 
 /* MEMBERS */
 
-@media(min-width:640px){
-
-.sm\:grid-cols-2{
-
-grid-template-columns:
-repeat(
-2,
-1fr
-);
-
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+@media (min-width: 1200px) {
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-
-@media(min-width:1200px){
-
-.lg\:grid-cols-4{
-
-grid-template-columns:
-repeat(
-4,
-1fr
-);
-
-}
-
-}
-
-
 
 /* DIRECTORY */
 
-@media(min-width:1200px){
-
-.lg\:grid-cols-3{
-
-grid-template-columns:
-repeat(
-3,
-1fr
-);
-
-}
-
+@media (min-width: 1200px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 .text-sm {
   font-size: 0.9rem;
@@ -433,6 +376,15 @@ button {
   background-clip: text;
 }
 
+#nav-title {
+  font-family:"Poppins",sans-serif;
+font-size:2rem;
+font-weight:900;
+letter-spacing:-1px;
+color:#798ed4;
+text-transform:none;
+}
+
 .hero-pattern .flex {
   display: flex;
   gap: 10px;
@@ -480,7 +432,7 @@ button {
 }
 
 .hero-pattern p {
-  font-size: 16px;
+  font-size: 14px;
   color: #3e3d3d;
   min-width: 220px;
   padding: 16px 28px;
