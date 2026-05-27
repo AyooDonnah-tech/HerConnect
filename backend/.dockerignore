@@ -1,0 +1,12 @@
+target/
+.git/
+.gitignore
+.vscode/
+Dockerfile
+.dockerignore
+backend/
+frontend/
+*.docx
+*.pdf
+pom.xml.releaseBackup
+release.properties
