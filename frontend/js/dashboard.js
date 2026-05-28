@@ -4,10 +4,10 @@
 
 // ── Data ────────────────────────────────────
 
-// Protect dashboard
-if(localStorage.getItem("isLoggedIn") !== "true"){
-    window.location.href = "login.html";
-}
+// // Protect dashboard
+// if(localStorage.getItem("isLoggedIn") !== "true"){
+//     window.location.href = "login.html";
+// }
 
 const PAGES = {
   home: "Home",
