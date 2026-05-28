@@ -3,13 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Her Connect</title>
+  <title>Her Connect – Dashboard</title>
   <link rel="stylesheet" href="dashboard.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 </head>
 <body>
-  <div class="app-root" id="app"></div>
-  <script src="dashboard.js" ></script>
+  <div class="shell">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sb-brand">
+      <div class="sb-logo">
+      <img src="images/H (6).png" alt="Her Connect Logo">
+    </div>        
+    <div>
+          <div class="sb-title">Her Connect</div>
+          <div class="sb-sub">Alumni Network</div>
+        </div>
+      </div>
+
+      <nav class="sb-nav">
+        <div class="sb-section">Main</div>
+        <button class="sb-item active" data-page="home"><i class="ti ti-home"></i><span>Home</span></button>
+        <button class="sb-item" data-page="community"><i class="ti ti-users"></i><span>Community</span></button>
+        <button class="sb-item" data-page="events"><i class="ti ti-calendar"></i><span>Events</span></button>
+        <button class="sb-item" data-page="messages"><i class="ti ti-mail"></i><span>Inbox</span><span class="badge">3</span></button>
+
+        <div class="sb-section">Grow</div>
+        <button class="sb-item" data-page="mentorship"><i class="ti ti-heart"></i><span>Mentorship</span></button>
+        <button class="sb-item" data-page="opportunities"><i class="ti ti-briefcase"></i><span>Opportunities</span></button>
+        <button class="sb-item" data-page="resources"><i class="ti ti-book"></i><span>Resources</span></button>
+        <button class="sb-item" data-page="growth"><i class="ti ti-trending-up"></i><span>Growth</span></button>
+
+        <div class="sb-section">Discover</div>
+        <button class="sb-item" data-page="showcase"><i class="ti ti-star"></i><span>Showcase</span></button>
+        <button class="sb-item" data-page="stories"><i class="ti ti-sparkles"></i><span>Stories</span></button>
+
+        <div class="sb-section">Account</div>
+        <button class="sb-item" data-page="profile"><i class="ti ti-user"></i><span>Profile</span></button>
+        <button class="sb-item" data-page="settings"><i class="ti ti-settings"></i><span>Settings</span></button>
+      </nav>
+
+      <div class="sb-footer">
+        <div class="sb-user">
+          <div class="avatar-sm">AK</div>
+          <div>
+            <div class="sb-user-name">Amara Kiggundu</div>
+            <div class="sb-user-role">Cohort 2019</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <div class="main" id="main">
+
+      <!-- Top bar -->
+      <header class="topbar">
+        <div class="tb-left">
+          <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu">
+            <i class="ti ti-menu-2"></i>
+          </button>
+          <span class="page-title" id="pageTitle">Home</span>
+        </div>
+        <div class="tb-right">
+          <button class="icon-btn" aria-label="Search"><i class="ti ti-search"></i></button>
+          <button class="icon-btn notif-btn" aria-label="Notifications">
+            <i class="ti ti-bell"></i>
+            <span class="notif-dot"></span>
+          </button>
+          <div class="tb-avatar" aria-label="Profile">AK</div>
+        </div>
+      </header>
+
+      <!-- Page content -->
+      <main class="page" id="content"></main>
+    </div>
+
+    <!-- Mobile overlay -->
+    <div class="overlay" id="overlay"></div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
 </body>
 </html>
