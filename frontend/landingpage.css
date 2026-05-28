@@ -50,12 +50,19 @@
   --brand-dark:     #5B21B6;
 
   /* spacing */
-  --section-space:  7rem;
+  --section-space:  52px;
   --section-space-sm: 4rem;
   --section-space-lg: 10rem;
 
   --nav-h:          64px;
   --ease:           0.25s ease;
+
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
 }
 
 
@@ -122,7 +129,7 @@ nav.scrolled { box-shadow: var(--shadow-md); }
   background: none; border: none;
   font-family: var(--font-body); font-size: .875rem; font-weight: 500;
   color: var(--text-2); cursor: pointer;
-  padding: var(--section-gap) 5vw; border-radius: var(--radius-sm);
+  padding: .7rem 1rem;; border-radius: var(--radius-sm);
   transition: color var(--ease), background var(--ease);
   white-space: nowrap;
 }
@@ -381,7 +388,7 @@ h2.section-title em { font-style: italic; color: var(--brand); }
 .hero {
   min-height: 100vh;
   display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; padding: calc(var(--nav-h) + 48px) 5vw 64px; gap: 4rem;
+  align-items: center; padding: calc(var(--nav-h) + 32px) 5vw 40px; gap: 4rem;
   background: var(--surface);
   position: relative; overflow: hidden;
 }
@@ -505,7 +512,7 @@ h1.hero-title em { font-style: italic; color: var(--brand); }
 /* ================================================================
    COHORTS
    ================================================================ */
-.cohorts { padding: 72px 5vw; background: var(--bg); }
+.cohorts { padding: var(--section-space) 5vw; background: var(--bg); }
 .cohorts-header { margin-bottom: 2.5rem; }
 
 .cohort-scroll-wrap { overflow-x: auto; padding-bottom: 1rem; -webkit-overflow-scrolling: touch; }
@@ -538,7 +545,7 @@ h1.hero-title em { font-style: italic; color: var(--brand); }
 /* ================================================================
    FEATURES
    ================================================================ */
-.features { padding: 72px 5vw; background: var(--surface); }
+.features { padding: var(--section-space) 5vw; background: var(--surface); }
 .features-header { text-align: center; margin-bottom: 2rem; }
 .features-header .section-label { justify-content: center; }
 .features-header .section-sub { margin: 0 auto; }
@@ -576,7 +583,7 @@ h3.feat-title { font-family: var(--font-head); font-size: 1rem; font-weight: 700
 /* ================================================================
    LEADERSHIP
    ================================================================ */
-.leadership { padding: 72px 5vw; background: var(--text-1); }
+.leadership { padding: var(--section-space) 5vw; background: var(--text-1); }
 .leadership .section-label { color: var(--brand-light); }
 .leadership .section-label::before, .leadership .section-label::after { background: rgba(196,181,253,.3); }
 .leadership h2 { color: #fff; }
@@ -617,7 +624,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
    SISTERHOOD FRIDAYS
    ================================================================ */
 .sisterhood {
-  padding: 72px 5vw;
+  padding: var(--section-space) 5vw;
   background: linear-gradient(135deg, var(--brand-light) 0%, var(--teal-light) 100%);
 }
 .sisterhood-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
@@ -671,7 +678,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
 /* ================================================================
    DISCUSSIONS
    ================================================================ */
-.discussions { padding: 72px 5vw; background: var(--surface); }
+.discussions { padding: var(--section-space) 5vw; background: var(--surface); }
 .discussions-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
 
 .forum-mock {
@@ -722,7 +729,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
 /* ================================================================
    SHOWCASE
    ================================================================ */
-.showcase { padding: 72px 5vw; background: var(--bg); }
+.showcase { padding: var(--section-space) 5vw; background: var(--bg); }
 .showcase-header { text-align: center; margin-bottom: 2rem; }
 .showcase-header .section-label { justify-content: center; }
 .showcase-header .section-sub   { margin: 0 auto; }
@@ -750,7 +757,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
 /* ================================================================
    MENTORSHIP
    ================================================================ */
-.mentorship { padding: 72px 5vw; background: var(--surface); }
+.mentorship { padding: var(--section-space) 5vw; background: var(--surface); }
 .mentorship-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
 
 .mentor-chain { display: flex; flex-direction: column; }
@@ -779,7 +786,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
 /* ================================================================
    RESOURCES
    ================================================================ */
-.resources { padding: 72px 5vw; background: var(--bg); }
+.resources { padding: var(--section-space) 5vw; background: var(--bg); }
 .resources-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
 
 .resource-cats { display: flex; flex-direction: column; gap: .85rem; }
@@ -816,7 +823,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
 /* ================================================================
    HOW IT WORKS
    ================================================================ */
-.how { padding: 72px 5vw; background: var(--surface); }
+.how { padding: var(--section-space) 5vw; background: var(--surface); }
 .how-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
 
 .steps { margin-top: 1.75rem; display: flex; flex-direction: column; }
@@ -848,7 +855,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
 /* ================================================================
    USER ROLES
    ================================================================ */
-.user-roles { padding: 72px 5vw; background: var(--bg); }
+.user-roles { padding: var(--section-space) 5vw; background: var(--bg); }
 
 .roles-tab-wrap { display: flex; gap: .5rem; margin-bottom: 2.2rem; flex-wrap: wrap; }
 .rtab {
@@ -881,7 +888,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
 /* ================================================================
    TESTIMONIALS
    ================================================================ */
-.testimonials { padding: 72px 5vw; background: var(--text-1); }
+.testimonials { padding: var(--section-space) 5vw; background: var(--text-1); }
 .testimonials .section-title { color: #fff; }
 .testimonials .section-label { color: var(--brand-light); }
 .testimonials .section-label::before, .testimonials .section-label::after { background: rgba(196,181,253,.3); }
@@ -905,7 +912,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
 /* ================================================================
    PRICING
    ================================================================ */
-.pricing { padding: 72px 5vw; background: var(--surface); text-align: center; }
+.pricing { padding: var(--section-space) 5vw; background: var(--surface); text-align: center; }
 .pricing .section-label { justify-content: center; }
 .pricing .section-sub   { margin: 0 auto 2.8rem; }
 
@@ -975,7 +982,7 @@ h3.role-title { font-family: var(--font-head); font-size: .9rem; font-weight: 70
    ================================================================ */
 .cta-strip {
   background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 50%, #0D9488 100%);
-  padding: 72px 5vw; text-align: center;
+  padding: var(--section-space) 5vw; text-align: center;
 }
 .cta-strip h2 {
   font-family: var(--font-head); font-size: clamp(1.7rem,3.2vw,2.5rem);
