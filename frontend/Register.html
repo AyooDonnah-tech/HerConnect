@@ -1,0 +1,111 @@
+<!-- @@ -0,0 +1,168 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    // Redirect to index if already logged in
+    if (session.getAttribute("name") != null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+%> -->
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>
+
+Register
+
+</title>
+
+<link
+rel="stylesheet"
+href="register-login.css">
+
+</head>
+
+<body>
+
+<div class="auth-container">
+
+<div class="auth-left">
+<div id="logo"> <img src="images/H (6).png" alt="Her Connect"></div>
+
+<h1>
+  Her Connect
+</h1>
+
+<h2>Everything You Need to Thrive</h2>
+
+<p>
+Designed exclusively for women who are building something extraordinary.
+</p>
+
+</div>
+
+
+<div class="auth-right">
+
+<form
+id="registerForm"
+class="auth-card">
+
+<h2>
+
+Create Account
+
+</h2>
+
+<!-- Success/Error Message box -->
+<div id="messageBox" class="message"></div>
+
+
+<input
+id="name"
+placeholder="Full name"
+required>
+
+
+<input
+id="email"
+type="email"
+placeholder="Email"
+required>
+
+
+<input
+id="password"
+type="password"
+placeholder="Password"
+required>
+
+
+<button>
+
+Create account
+
+</button>
+
+
+<p>
+
+Already registered?
+
+<a href="Login.html">
+
+Login
+
+</a>
+
+</p>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/register.js"></script>
+
+</body>
+</html>
