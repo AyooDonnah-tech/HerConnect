@@ -1,41 +1,71 @@
+// LOGIN.JS - Links frontend to backend API
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = document.getElementById('login-submit');
-      const errBox = document.getElementById('error-message');
-      
-      errBox.style.display = 'none';
-      btn.textContent = 'Signing in…';
-      btn.disabled = true;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const messageBox = document.getElementById('messageBox');
 
-      const email = document.getElementById('login-email').value;
-      const password = document.getElementById('login-password').value;
+    // Clear previous messages
+    if (messageBox) {
+        messageBox.style.display = 'none';
+        messageBox.textContent = '';
+    }
 
-      try {
-        const response = await fetch('login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({ email, password })
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Logging in...';
+    }
+
+    try {
+        const response = await fetch('http://localhost:8080/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({ email, password })
         });
         
-        const data = await response.json();
+        let data;
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+            data = await response.json();
+        } else {
+            throw new Error(`Server returned non-JSON response (${response.status} ${response.statusText}). Is the backend running?`);
+        }
         
         if (data.success) {
-          window.location.href = 'index.jsp';
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("user", JSON.stringify({ name: data.name, email: data.email }));
+            localStorage.setItem("currentUser", data.name);
+            window.location.href = 'index.html'; // redirect to dashboard
         } else {
-          errBox.textContent = data.message || 'Invalid credentials. Please try again.';
-          errBox.style.display = 'block';
-          btn.textContent = 'Sign In';
-          btn.disabled = false;
+            if (messageBox) {
+                messageBox.textContent = data.message || 'Invalid credentials. Please try again.';
+                messageBox.className = 'message error';
+                messageBox.style.display = 'block';
+            } else {
+                alert(data.message || 'Invalid credentials. Please try again.');
+            }
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Login';
+            }
         }
-      } catch (err) {
+    } catch (err) {
         console.error(err);
-        errBox.textContent = 'An unexpected error occurred. Please try again later.';
-        errBox.style.display = 'block';
-        btn.textContent = 'Sign In';
-        btn.disabled = false;
-      }
-    });
-  
+        const errorMsg = err.message || 'Could not connect to the backend server. Please ensure the API is running at http://localhost:8080.';
+        if (messageBox) {
+            messageBox.textContent = errorMsg;
+            messageBox.className = 'message error';
+            messageBox.style.display = 'block';
+        } else {
+            alert(errorMsg);
+        }
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Login';
+        }
+    }
+});

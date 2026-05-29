@@ -28,7 +28,9 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        try (PrintWriter out = response.getWriter()) {
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
             if (email == null || email.trim().isEmpty() ||
                 password == null || password.trim().isEmpty()) {
                 
@@ -48,25 +50,31 @@ public class LoginServlet extends HttpServlet {
 
             String storedPasswordHash = userDoc.getString("password");
             if (PasswordUtils.verifyPassword(password, storedPasswordHash)) {
-                String firstName = userDoc.getString("firstName");
-                String lastName = userDoc.getString("lastName");
+                String name = userDoc.getString("name");
                 String role = userDoc.getString("role");
 
                 // Initialize session
                 HttpSession session = request.getSession();
                 session.setAttribute("email", email);
-                session.setAttribute("name", firstName + " " + lastName);
+                session.setAttribute("name", name);
                 session.setAttribute("role", role);
 
-                out.print("{\"success\": true}");
+                String escapedName = name.replace("\"", "\\\"");
+                String escapedEmail = email.replace("\"", "\\\"");
+                out.print(String.format("{\"success\": true, \"name\": \"%s\", \"email\": \"%s\"}", escapedName, escapedEmail));
             } else {
                 out.print("{\"success\": false, \"message\": \"Invalid email or password.\"}");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            try (PrintWriter out = response.getWriter()) {
-                String errorMsg = e.getMessage().replace("\"", "\\\"");
-                out.print("{\"success\": false, \"message\": \"Database error: " + errorMsg + "\"}");
+            if (out == null) {
+                out = response.getWriter();
+            }
+            String errorMsg = e.getMessage() != null ? e.getMessage().replace("\"", "\\\"") : "Unknown server error";
+            out.print("{\"success\": false, \"message\": \"Server error: " + errorMsg + "\"}");
+        } finally {
+            if (out != null) {
+                out.close();
             }
         }
     }

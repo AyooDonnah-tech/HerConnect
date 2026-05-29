@@ -55,6 +55,9 @@ Create Account
 
 </h2>
 
+<!-- Success/Error Message box -->
+<div id="messageBox" class="message"></div>
+
 
 <input
 id="name"
@@ -87,7 +90,7 @@ Create account
 
 Already registered?
 
-<a href="login.html">
+<a href="Login.html">
 
 Login
 
@@ -101,71 +104,7 @@ Login
 
 </div>
 
-<script src="register.js"></script>
+<script src="js/register.js"></script>
 
 </body>
-</html>
-  <script>
-    const pwd = document.getElementById('reg-password');
-    const fill = document.getElementById('strength-fill');
-    const label = document.getElementById('strength-label');
-    pwd.addEventListener('input', () => {
-      const v = pwd.value;
-      let score = 0;
-      if (v.length >= 8) score++;
-      if (/[A-Z]/.test(v)) score++;
-      if (/[0-9]/.test(v)) score++;
-      if (/[^A-Za-z0-9]/.test(v)) score++;
-      const map = ['', 'Weak', 'Fair', 'Good', 'Strong'];
-      const colors = ['', '#E74C3C', '#E67E22', '#F1C40F', '#2563EB'];
-      fill.style.width = (score * 25) + '%';
-      fill.style.background = colors[score];
-      label.textContent = score ? map[score] : 'Enter a password';
-    });
-
-    document.getElementById('register-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = document.getElementById('reg-submit');
-      const errBox = document.getElementById('error-message');
-      errBox.style.display = 'none';
-      
-      btn.textContent = 'Creating account…';
-      btn.disabled = true;
-
-      const firstName = document.getElementById('reg-first').value;
-      const lastName = document.getElementById('reg-last').value;
-      const email = document.getElementById('reg-email').value;
-      const role = document.getElementById('reg-role').value;
-      const password = document.getElementById('reg-password').value;
-
-      try {
-        const response = await fetch('register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({ firstName, lastName, email, role, password })
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-          window.location.href = 'index.jsp';
-        } else {
-          errBox.textContent = data.message || 'Registration failed. Please try again.';
-          errBox.style.display = 'block';
-          btn.textContent = 'Create My Account';
-          btn.disabled = false;
-        }
-      } catch (err) {
-        console.error(err);
-        errBox.textContent = 'An unexpected error occurred. Please try again.';
-        errBox.style.display = 'block';
-        btn.textContent = 'Create My Account';
-        btn.disabled = false;
-      }
-    });
-  </script>
-</body>
-
 </html>

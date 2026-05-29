@@ -1,4 +1,3 @@
-import { renderDashboard } from './dashboard.js';
 const nav=document.getElementById('navbar');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
 const observer=new IntersectionObserver((entries)=>{
@@ -32,4 +31,3 @@ function showRole(role){
   if(block)block.classList.add('active');
   event.target.classList.add('active');
 }
-import { observeCards } from './dashboard.js';

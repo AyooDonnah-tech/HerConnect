@@ -6,7 +6,7 @@
 
 // Protect dashboard
 if(localStorage.getItem("isLoggedIn") !== "true"){
-    window.location.href = "login.html";
+    window.location.href = "Login.html";
 }
 
 const PAGES = {
@@ -212,7 +212,7 @@ function handleConnect() {
   if (loggedIn === "true") {
     navigate("messages");
   } else {
-    window.location.href = "login.html";
+    window.location.href = "Login.html";
   }
 }
 
@@ -222,7 +222,7 @@ function handleEventRegister() {
   if (loggedIn === "true") {
     alert("Successfully registered!");
   } else {
-    window.location.href = "register.html";
+    window.location.href = "Register.html";
   }
 }
 
@@ -653,13 +653,12 @@ const pageRenderers = {
 
 function navigate(page) {
 
-  // Logout handling
   if(page === "logout") {
-
     localStorage.removeItem("isLoggedIn");
-
-    window.location.href = "login.html";
-
+    localStorage.removeItem("user");
+    localStorage.removeItem("currentUser");
+    fetch('http://localhost:8080/logout').catch(err => console.error(err));
+    window.location.href = "Login.html";
     return;
   }
 

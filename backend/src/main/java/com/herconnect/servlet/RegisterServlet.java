@@ -26,19 +26,23 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
+        String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String role = request.getParameter("role");
         String password = request.getParameter("password");
+        String role = request.getParameter("role");
 
-        try (PrintWriter out = response.getWriter()) {
-            if (firstName == null || firstName.trim().isEmpty() ||
-                lastName == null || lastName.trim().isEmpty() ||
+        if (role == null || role.trim().isEmpty()) {
+            role = "Alumni";
+        }
+
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+            if (name == null || name.trim().isEmpty() ||
                 email == null || email.trim().isEmpty() ||
                 password == null || password.trim().isEmpty()) {
                 
-                out.print("{\"success\": false, \"message\": \"All required fields must be filled.\"}");
+                out.print("{\"success\": false, \"message\": \"All fields (name, email, password) are required.\"}");
                 return;
             }
 
@@ -54,8 +58,7 @@ public class RegisterServlet extends HttpServlet {
 
             // Hash the password and save the user
             String hashedPassword = PasswordUtils.hashPassword(password);
-            Document userDoc = new Document("firstName", firstName)
-                    .append("lastName", lastName)
+            Document userDoc = new Document("name", name)
                     .append("email", email)
                     .append("role", role)
                     .append("password", hashedPassword)
@@ -66,15 +69,22 @@ public class RegisterServlet extends HttpServlet {
             // Log the user in automatically by initializing the session
             HttpSession session = request.getSession();
             session.setAttribute("email", email);
-            session.setAttribute("name", firstName + " " + lastName);
+            session.setAttribute("name", name);
             session.setAttribute("role", role);
 
-            out.print("{\"success\": true}");
+            String escapedName = name.replace("\"", "\\\"");
+            String escapedEmail = email.replace("\"", "\\\"");
+            out.print(String.format("{\"success\": true, \"name\": \"%s\", \"email\": \"%s\"}", escapedName, escapedEmail));
         } catch (Exception e) {
             e.printStackTrace();
-            try (PrintWriter out = response.getWriter()) {
-                String errorMsg = e.getMessage().replace("\"", "\\\"");
-                out.print("{\"success\": false, \"message\": \"Database error: " + errorMsg + "\"}");
+            if (out == null) {
+                out = response.getWriter();
+            }
+            String errorMsg = e.getMessage() != null ? e.getMessage().replace("\"", "\\\"") : "Unknown server error";
+            out.print("{\"success\": false, \"message\": \"Server error: " + errorMsg + "\"}");
+        } finally {
+            if (out != null) {
+                out.close();
             }
         }
     }
