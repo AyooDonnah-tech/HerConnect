@@ -657,7 +657,7 @@ function navigate(page) {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("user");
     localStorage.removeItem("currentUser");
-    fetch('http://localhost:8080/logout').catch(err => console.error(err));
+    fetch(`${API_BASE_URL}/logout`).catch(err => console.error(err));
     window.location.href = "Login.html";
     return;
   }

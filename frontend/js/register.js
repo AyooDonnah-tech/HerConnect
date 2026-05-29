@@ -21,7 +21,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     }
 
     try {
-        const response = await fetch('http://localhost:8080/register', {
+        const response = await fetch(`${API_BASE_URL}/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -72,7 +72,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         }
     } catch (err) {
         console.error(err);
-        const errorMsg = err.message || 'Could not connect to the backend server. Please ensure the API is running at http://localhost:8080.';
+        const errorMsg = err.message || `Could not connect to the backend server. Please ensure the API is running at ${API_BASE_URL}.`;
         if (messageBox) {
             messageBox.textContent = errorMsg;
             messageBox.className = 'message error';
