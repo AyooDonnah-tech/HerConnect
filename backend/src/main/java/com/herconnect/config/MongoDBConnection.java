@@ -28,7 +28,7 @@ public class MongoDBConnection {
             String connStr = System.getenv("MONGODB_URI");
             if (connStr == null || connStr.isEmpty()) {
                 System.out.println("MONGODB_URI environment variable is not set. Falling back to local MongoDB instance.");
-                connStr = "mongodb+srv://Variandn04_db_user:herconnect@herconnect123.wix9jpp.mongodb.net/?appName=herconnect";
+                connStr = "mongodb+srv://herconnect_admin:Admin1234@herconnect.wix9jpp.mongodb.net/?appName=herconnect";
             }
             // Debug: log that we're connecting (mask the password)
             String masked = connStr.replaceAll("://([^:]+):([^@]+)@", "://$1:****@");
