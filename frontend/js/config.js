@@ -3,7 +3,7 @@
 // ----------------------------------------------------
 // CHANGE THIS URL WHEN DEPLOYING TO PRODUCTION (RENDER)
 // ----------------------------------------------------
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = 'https://herconnect-api.onrender.com';
 
 // Example for Production:
 // const API_BASE_URL = 'https://herconnect-api.onrender.com';
