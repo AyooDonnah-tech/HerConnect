@@ -9,5 +9,6 @@ FROM tomcat:10.1-jdk21-temurin-jammy
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 ENV PORT=8080
+ENV CATALINA_OPTS="-Xms256m -Xmx300m"
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
